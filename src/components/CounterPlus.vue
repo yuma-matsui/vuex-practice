@@ -1,13 +1,10 @@
 <template>
   <p>{{ count }}</p>
-  <p>{{ oddNumber }}</p>
-  <p>{{ evenNumber }}</p>
-  <p>{{ matchString(String(1)) }}</p>
-  <button @click="countPlus">+</button>
+  <button @click="increment">+</button>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 export default {
   computed: {
     count () {
@@ -22,9 +19,9 @@ export default {
   },
 
   methods: {
-    countPlus () {
-      this.$store.commit('increment')
-    }
+    ...mapActions([
+      'increment'
+    ])
   }
 }
 </script>

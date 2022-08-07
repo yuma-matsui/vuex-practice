@@ -11,20 +11,18 @@ export default createStore({
 
     evenNumber (state) {
       return state.count % 2 === 0
-    },
-
-    matchString (state) {
-      return (string) => {
-        return String(state.count) === string
-      }
     }
   },
   mutations: {
     increment (state) {
-      state.count++
+      state.count += 1
     }
   },
   actions: {
+    increment ({ commit, getters }) {
+      commit('increment')
+      if (getters.oddNumber) console.log('奇数です')
+    }
   },
   modules: {
   }
